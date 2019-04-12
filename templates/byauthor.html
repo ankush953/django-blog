@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="content-section">
+  <div class="media">
+    <img class="rounded-circle account-img" src="{{ author.siteuser.profile_pic.url }}">
+    <div class="media-body">
+      <h2 class="account-heading">{{ author.get_full_name|capfirst }}</h2>
+      <p class="text-secondary"><b>username:</b> {{ author.username }}</p>
+      <p class="text-secondary">{{ author.email }}</p>
+      {% if request.user.username == author.username %}
+      <a class="text-secondary" href="{% url 'users:update' author.username %}">Update</a>
+      {% endif %}
+    </div>
+  </div>
+  <div class='row'>
+    <div class="col">
+      {% if author.siteuser.facebook %}
+      <a href="{{ author.siteuser.facebook }}"><i class="fa fa-facebook"></i></a>
+      {% endif %}
+    </div>
+    <div class="col">
+      {% if author.siteuser.twitter %}
+      <a href="{{ author.siteuser.twitter }}"><i class="fa fa-twitter"></i></a>
+      {% endif %}
+    </div>
+    <div class="col">
+      {% if author.siteuser.linkedin %}
+      <a href="{{ author.siteuser.linkedin }}"><i class="fa fa-linkedin"></i></a>
+      {% endif %}
+    </div>
+    <div class="col">
+      {% if author.siteuser.github %}
+      <a href="{{ author.siteuser.github }}"><i class="fa fa-github"></i></a>
+      {% endif %}
+    </div>
+  </div>
+  <!-- FORM HERE -->
+</div>
+
+<div class="content-section">
+  <h2>About Me</h2>
+  {% if author.siteuser.bio %}
+  {{ author.siteuser.bio }}
+  {% endif %}
+</div>
+
+<div>
+  {% for post in posts %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="{% url 'users:searchbyauthor' post.user %}">{{ post.user|capfirst }}</a>
+        <small class="text-muted">{{ post.updated_at }}</small>
+      </div>
+      <h2><a class="article-title" href="{% url 'articles:readmore' post.slug%}">{{ post.title }}</a></h2>
+      <p class="article-content">{{ post.content|safe }}</p>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+
+{% endblock content %}

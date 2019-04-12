@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="content-section">
+    <div class="media">
+        <img class="rounded-circle account-img" src="{{ author.siteuser.profile_pic.url }}">
+        <div class="media-body">
+            <h2 class="account-heading">{{ author.get_full_name|capfirst }}</h2>
+            <p class="text-secondary"><b>username:</b> {{ author.username }}</p>
+            <p class="text-secondary">{{ author.email }}</p>
+            {% if request.user.username == author.username %}
+            <a class="text-secondary" href="{{ author.username }}">Update</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class='row'>
+        <div class="col">
+            <a href="{{ author.siteuser.facebook }}"><i class="fa fa-facebook"></i></a>
+        </div>
+        <div class="col">
+            <a href="{{ author.siteuser.twitter }}"><i class="fa fa-twitter"></i></a>
+        </div>
+        <div class="col">
+            <a href="{{ author.siteuser.linkedin }}"><i class="fa fa-linkedin"></i></a>
+        </div>
+        <div class="col">
+            <a href="{{ author.siteuser.github }}"><i class="fa fa-github"></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="content-section">
+    <h2>About Me</h2>
+    <article>
+        I am Ankush Kumar Singh An undergraduate Computer Science Student. This project is being developed and
+        maintained by me. Feel free to point out any mistakes. It will give me a chance to enhance the project.
+    </article>
+</div>
+
+{% endblock content %}
