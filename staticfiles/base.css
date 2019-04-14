@@ -1,0 +1,19 @@
+#opening{
+    background: black;
+}
+
+#menu{
+    padding-left: 5%;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#login{
+    color: red;
+    width: 20%;
+}
+
+#signup{
+    color: red;
+    width: 20%;
+}
+

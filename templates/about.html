@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="content-section">
+    <div class="media">
+        <img class="rounded-circle account-img" src="{{ author.siteuser.profile_pic.url }}">
+        <div class="media-body">
+            <h2 class="account-heading">{{ author.get_full_name|capfirst }}</h2>
+            <p class="text-secondary"><b>username:</b> {{ author.username }}</p>
+            <p class="text-secondary">{{ author.email }}</p>
+            {% if request.user.username == author.username %}
+            <a class="text-secondary" href="{{ author.username }}">Update</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class='row'>
+        <div class="col">
+            <a href="https://www.codechef.com/users/ankush_953" target="_blank"><img src="/media/profile-links/codechef.jpg"
+                    alt="Codechef" height="30px" width="30px"></a>
+        </div>
+
+        <div class="col">
+            <a href="https://www.hackerrank.com/ankush_953" target="_blank"><img src="/media/profile-links/hackerrank.png"
+                    alt="Hackerrank" height="30px" width="30px"></a>
+        </div>
+
+        <div class="col">
+            <a href="https://www.hackerearth.com/@ankush_953" target="_blank"><img src="/media/profile-links/hackerearth.png"
+                    alt="Hackerearth" height="30px" width="30px"></a>
+        </div>
+
+        <div class="col">
+            <a href="{{ author.siteuser.linkedin }}" target="_blank"><img src="/media/profile-links/linkedin.png" alt="Linkedin"
+                    height="30px" width="30px"></a>
+        </div>
+
+
+        <div class="col">
+            <a href="{{ author.siteuser.github }}" target="_blank"><img src="/media/profile-links/github.jpg" alt="GitHub" height="30px"
+                    width="30px"></a>
+        </div>
+
+        <div class="col">
+            <a href="{{ author.siteuser.facebook }}" target="_blank"><img src="/media/profile-links/fb.png" alt="Facebook" height="30px"
+                    width="30px"></a>
+        </div>
+    </div>
+</div>
+<div class="content-section">
+    <h2>About Me</h2>
+    <article>
+        {{ author.siteuser.bio }}
+    </article>
+</div>
+
+{% endblock content %}

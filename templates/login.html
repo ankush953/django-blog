@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<form method='POST' action="" id='menu'>
+    {% csrf_token %}
+    {{ form|crispy }}
+    {% if request.GET.next %}
+    <input type="hidden" name="next" value="{{ request.GET.next }}">
+    {% endif %}
+    <input type="submit" value="Login">
+
+    <small class="text-muted">
+        <a class="ml-2" href="{% url 'password-reset' %}">Forgot Password ?</a>
+    </small>
+</form>
+<div class="border-top pt-3">
+    <small class="text-muted">
+        Need An Account? <a class="ml-2" href="{% url 'users:signup' %}">Sign Up Now</a>
+    </small>
+</div>
+
+{% endblock %}

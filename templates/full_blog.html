@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if post %}
+
+{% if message %}
+<div class='alert alert-primary'>
+    {{ message }}
+</div>
+{% endif %}
+
+
+<div class="container">
+    <div class="jumbotron">
+
+        {% for tag in post_tags %}
+        <a href="{% url 'articles:tagged' tag %}">{{ tag }}</a>
+        {% endfor %}
+
+        <div>
+            {% if post.user == request.user %}
+            <a class="btn btn-outline-info mb-4" href="{% url 'articles:update-article' post.pk %}">Update</a>
+            <a class="btn btn-outline-danger mb-4" href="{% url 'articles:delete-article' post.pk %}">Delete</a>
+            {% endif %}
+        </div>
+
+        <h2> <a href="{% url 'users:searchbyauthor' post.user %}">{{ post.user|capfirst }}</a></h2> <br>
+        <!-- <b>Published On: </b> {{ post.published_date }} <br> -->
+        <b>Title</b>: {{ post.title }} <br>
+        <b>Post</b>: {{ post.content|linebreaks }} <br>
+        <div class="media">
+            {% if post.image %}
+            <img src="{{ post.image.url }}" alt="image" align="centre">
+            {% endif %}
+        </div>
+        <div class="">
+            <a href="{% url 'articles:upvote' post.slug %}"><img src="/media/upvote.png" alt="Upvote" height="30px" width="30px"></a> {{ post.votes }}
+            <a href="{% url 'articles:downvote' post.slug %}"><img src="/media/downvote.png" alt="Downvote" height="30px" width="30px"></a>
+        </div>
+
+
+    </div>
+
+
+</div>
+{% endif %}
+
+{% endblock %}
