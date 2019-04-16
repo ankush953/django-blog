@@ -121,13 +121,17 @@
         $(document).ready(function () {
             $('.content-markdown').each(function () {
                 let content = $(this).text();
-                // console.log(content)
+                
                 let markedcontent = marked(content);
-                // console.log(markedcontent);
+                
                 $(this).html(markedcontent);
 
             })
 
+            $(".content-markdown img").each(function () {
+                $(this).addClass("img-fluid");
+
+            })
 
         })
     </script>
