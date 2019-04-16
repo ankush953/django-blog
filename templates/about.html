@@ -10,7 +10,7 @@
             <p class="text-secondary"><b>username:</b> {{ author.username }}</p>
             <p class="text-secondary">{{ author.email }}</p>
             {% if request.user.username == author.username %}
-            <a class="text-secondary" href="{{ author.username }}">Update</a>
+            
             {% endif %}
         </div>
     </div>

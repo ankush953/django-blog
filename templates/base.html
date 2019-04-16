@@ -1,7 +1,6 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
-
 <head>
 
     <!-- Required meta tags -->
@@ -18,8 +17,10 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
 
+    {% block head_extra %} {% endblock head_extra %}
+
     {% if title %}
-    <title>Django Blog - {{ title }}</title>
+    <title>{{ title }}</title>
     {% else %}
     <title>Django Blog</title>
     {% endif %}

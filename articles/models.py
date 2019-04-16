@@ -26,7 +26,7 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     votes = models.IntegerField(verbose_name='Vote', default=0)
     tags = TaggableManager(blank=True)
-    image = models.ImageField(upload_to=imagepath, blank=True)
+    # image = models.ImageField(upload_to=imagepath, blank=True)
     TAGGIT_CASE_INSENSITIVE = True
 
     def __str__(self):
@@ -39,24 +39,24 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('articles:readmore', kwargs={'pk': self.pk})
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
 
-        img = Image.open(self.image.path)
-        if img.height > 400 or img.width > 400:
-            output_size = (400, 400)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
+    #     img = Image.open(self.image.path)
+    #     if img.height > 400 or img.width > 400:
+    #         output_size = (400, 400)
+    #         img.thumbnail(output_size)
+    #         img.save(self.image.path)
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
 
-        if self.image:
-            img = Image.open(self.image.path)
-            if img.height > 400 or img.width > 400:
-                output_size = (400, 400)
-                img.thumbnail(output_size)
-                img.save(self.image.path)
+    #     if self.image:
+    #         img = Image.open(self.image.path)
+    #         if img.height > 400 or img.width > 400:
+    #             output_size = (400, 400)
+    #             img.thumbnail(output_size)
+    #             img.save(self.image.path)
 
 
 class Vote(models.Model):

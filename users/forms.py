@@ -3,14 +3,13 @@ from django.db import models
 from django.contrib.auth.forms import UserCreationForm
 from users.models import SiteUser
 from django.contrib.auth.models import User
-
+from pagedown.widgets import PagedownWidget
 
 class LogInForm(forms.Form):
     user_name = forms.CharField(max_length=40)
     password = forms.CharField(widget=forms.PasswordInput())
 
-    # def get_choice(self):
-    #     return self.select
+    
 
 class SignUpForm(forms.ModelForm):
     class Meta:
@@ -28,16 +27,7 @@ class SignUpForm(forms.ModelForm):
             'twitter',
             'address',
         ]
-    # first_name = forms.CharField(max_length=15,min_length=1)
-    # middle_name = forms.CharField(max_length=15,min_length=0)
-    # last_name = forms.CharField(max_length=15,min_length=1)
-    # email = forms.EmailField(help_text='Enter Your Email Here')
-    # image = forms.ImageField()
-    # password = forms.CharField(widget=forms.PasswordInput())
-    # conf_password = forms.CharField(widget=forms.PasswordInput())
-    # class Meta:
-    #     model = SiteUser
-    #     fields = ['first_name','middle_name','last_name','email_id','profile_pic','address']
+    
 
 class BasicForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())

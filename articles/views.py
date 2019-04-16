@@ -36,8 +36,10 @@ def homepage(request):
     }
     return render(request, 'show_menu.html', context=context)
 
+
 def notifyusers(text):
     pass
+
 
 @login_required(login_url='users:login')
 def create(request, obj=None):
@@ -50,18 +52,13 @@ def create(request, obj=None):
             if post_form.is_valid():
                 instance = post_form.save(commit=False)
                 instance.user = request.user
-                # instance.author = request.user
 
                 instance.save()
-                # if instance.tags:
-                #     for tag in instance.tags.names():
-                #         print(type(instance))
-                #         instance.post_tags.append(tag)
-                instance.save()
+
                 post_form.save_m2m()
                 messages.success(request, 'Your Post is saved')
                 notifyusers(instance.content)
-                return redirect('articles:readmore',slug=instance.slug)
+                return redirect('articles:readmore', slug=instance.slug)
                 notifyusers(instance.content)
                 return redirect('articles:readmore', slug=instance.slug)
             else:
@@ -84,7 +81,7 @@ def readmore(request, slug):
     content = {
         'post': post,
         'post_tags': list(post.tags.names()),
-        'share_string':share_quote,
+        'share_string': share_quote,
     }
     return render(request, 'full_blog.html', content)
 
