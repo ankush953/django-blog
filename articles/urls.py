@@ -1,10 +1,6 @@
 from django.conf import urls
 from django.urls import path,include
-<<<<<<< HEAD
 from articles.views import homepage, create,readmore, searchbytag, upvote, downvote
-=======
-from articles.views import homepage, create,readmore, upvote, downvote, searchbytag
->>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
 from articles.views import update_article, ask_delete_article, confirm_delete_article
 from django.conf import settings
 from django.conf.urls.static import static

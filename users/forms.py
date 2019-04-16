@@ -9,12 +9,8 @@ class LogInForm(forms.Form):
     user_name = forms.CharField(max_length=40)
     password = forms.CharField(widget=forms.PasswordInput())
 
-<<<<<<< HEAD
     # def get_choice(self):
     #     return self.select
-=======
-  
->>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
 
 class SignUpForm(forms.ModelForm):
     class Meta:
@@ -32,7 +28,6 @@ class SignUpForm(forms.ModelForm):
             'twitter',
             'address',
         ]
-<<<<<<< HEAD
     # first_name = forms.CharField(max_length=15,min_length=1)
     # middle_name = forms.CharField(max_length=15,min_length=0)
     # last_name = forms.CharField(max_length=15,min_length=1)
@@ -43,9 +38,6 @@ class SignUpForm(forms.ModelForm):
     # class Meta:
     #     model = SiteUser
     #     fields = ['first_name','middle_name','last_name','email_id','profile_pic','address']
-=======
- 
->>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
 
 class BasicForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
