@@ -23,6 +23,7 @@ from users.views import about
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+<<<<<<< HEAD
     path('about/', about, name='about'),
     path('', include('articles.urls')),
     path('users/', include('users.urls')),
@@ -36,6 +37,17 @@ urlpatterns = [
 
     path('password-reset/complete', auth_views.PasswordResetCompleteView.as_view(
         template_name='password_reset_complete.html'), name='password_reset_complete'),
+=======
+    path('about/',about,name='about'),
+    path('', include('articles.urls')),
+    path('users/', include('users.urls')),
+    path('password-reset/',auth_views.PasswordResetView.as_view(template_name='password_reset.html'),name='password-reset'),
+    path('password-reset-confirm/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'),name='password_reset_confirm'),
+
+    path('password-reset/done/',auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done.html'),name='password_reset_done'),
+
+    path('password-reset/complete',auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'),name='password_reset_complete'),
+>>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
 ]
 
 if settings.DEBUG:

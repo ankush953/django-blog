@@ -3,6 +3,7 @@
 {% block content %}
 
 {% if post %}
+<<<<<<< HEAD
 
 {% if message %}
 <div class='alert alert-primary'>
@@ -11,6 +12,8 @@
 {% endif %}
 
 
+=======
+>>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
 <div class="container">
     <div class="jumbotron">
 
@@ -35,8 +38,13 @@
             {% endif %}
         </div>
         <div class="">
+<<<<<<< HEAD
             <a href="{% url 'articles:upvote' post.slug %}"><img src="/media/upvote.png" alt="Upvote" height="30px" width="30px"></a> {{ post.votes }}
             <a href="{% url 'articles:downvote' post.slug %}"><img src="/media/downvote.png" alt="Downvote" height="30px" width="30px"></a>
+=======
+            <a href="{% url 'articles:upvote' post.slug %}">Upvote</a> {{ post.votes }}
+            <a href="{% url 'articles:downvote' post.slug %}">Downvote</a>
+>>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
         </div>
 
 

@@ -24,7 +24,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+<<<<<<< HEAD
 DEBUG = os.environ.get('DEBUG_VALUE') == 'True'
+=======
+DEBUG = os.environ.get('DEBUG_VALUE')=='True'
+>>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
 # DEBUG = False
 
 ALLOWED_HOSTS = ['ankushforum.herokuapp.com']
@@ -54,8 +58,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+<<<<<<< HEAD
 
     'whitenoise.middleware.WhiteNoiseMiddleware',
+=======
+>>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
@@ -65,10 +72,13 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
+<<<<<<< HEAD
 
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
 
+=======
+>>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,10 +140,20 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+<<<<<<< HEAD
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 
+=======
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+STATIC_TMP = os.path.join(BASE_DIR, 'static')
+>>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_DIR = MEDIA_ROOT
@@ -142,6 +162,7 @@ STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 
+<<<<<<< HEAD
 STATICFILES_STORAGE= 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT= os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL= '/static/'
@@ -172,3 +193,16 @@ EMAIL_HOST_PASSWORD= os.environ.get('DJANGO_PASSWORD')
 DEFAULT_FROM_EMAIL= EMAIL_HOST_USER
 
 DEFAULT_FROM_EMAIL= EMAIL_HOST_USER
+=======
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+django_heroku.settings(locals())
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('email')
+EMAIL_HOST_PASSWORD = os.environ.get('DJANGO_PASSWORD')
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+>>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
