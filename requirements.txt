@@ -1,12 +1,9 @@
-<<<<<<< HEAD
 Django==2.1.7
 django-crispy-forms==1.7.2
 django-taggit==1.1.0
 gunicorn==19.9.0
 Pillow==5.4.1
 pytz==2018.9
-=======
->>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
 dj-database-url==0.5.0
 Django==2.1.7
 django-crispy-forms==1.7.2
@@ -16,8 +13,4 @@ gunicorn==19.9.0
 Pillow==5.4.1
 psycopg2==2.8.1
 pytz==2018.9
-<<<<<<< HEAD
 whitenoise==4.1.2
-=======
-whitenoise==4.1.2
->>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36

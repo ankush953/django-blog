@@ -1,6 +1,5 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 *.pyc
 *~
 __pycache__
@@ -11,8 +10,6 @@ db.sqlite3
 >>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
 =======
 >>>>>>> 2408a78b72116f455bcd0b6aca0949f86a4dbb7e
-=======
->>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
 .DS_Store
 
 # Byte-compiled / optimized / DLL files

@@ -87,14 +87,11 @@ def signup_view(request, instance=None):
 
             profile.save()
 
-<<<<<<< HEAD
             messages.success(request, 'Account has been created.')
             return redirect('articles:homepage')
             # messages.success(request, 'Account has been created.')
             return redirect('users:searchbyauthor',author=user.username)
             # return redirect('users:activate_account',user=user,profile=profile)
-=======
->>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
             # messages.success(request, 'Account has been created.')
             return redirect('users:searchbyauthor',author=user.username)
             # return redirect('users:activate_account',user=user,profile=profile)

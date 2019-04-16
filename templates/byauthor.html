@@ -39,21 +39,12 @@
   <!-- FORM HERE -->
 </div>
 
-<<<<<<< HEAD
 {% if author.siteuser.bio %}
 <div class="content-section">
   <h2>About Me</h2>
   {{ author.siteuser.bio }}
 </div>
 {% endif %}
-=======
-<div class="content-section">
-  <h2>About Me</h2>
-  {% if author.siteuser.bio %}
-  {{ author.siteuser.bio }}
-  {% endif %}
-</div>
->>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
 
 <div>
   {% for post in posts %}
