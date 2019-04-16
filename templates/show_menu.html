@@ -10,7 +10,7 @@
       </div>
       <h2><a class="article-title" href="{% url 'articles:readmore' post.slug%}">{{ post.title }}</a></h2>
       <p class="article-content">
-        <div class="content-markdown">{{ post.content|safe }}</div>
+        <div class="content-markdown">{{ post.content }}</div>
       </p>
     </div>
 

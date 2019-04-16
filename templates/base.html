@@ -1,6 +1,7 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
+
 <head>
 
     <!-- Required meta tags -->
@@ -119,12 +120,12 @@
     <script>
         $(document).ready(function () {
             $('.content-markdown').each(function () {
-                let content = $(".content-markdown").text();
-                console.log(content)
+                let content = $(this).text();
+                // console.log(content)
                 let markedcontent = marked(content);
-                console.log(markedcontent);
+                // console.log(markedcontent);
                 $(this).html(markedcontent);
-                
+
             })
 
 
