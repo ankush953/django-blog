@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from PIL import Image
 
 # Create your models here.
+<<<<<<< HEAD
 
 
 def imagepath(request, filename):
@@ -20,6 +21,20 @@ class SiteUser(models.Model):
 
     profile_pic = models.ImageField(
         upload_to=imagepath, blank=True, default='profile_pic/default-user.jpg')
+=======
+def imagepath(request,filename):
+    return 'profile_pic/'+request.user.username+'/'+filename
+
+class SiteUser(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    address = models.CharField(max_length=50,blank=True)
+    facebook = models.CharField(max_length=60,blank=True)
+    linkedin = models.CharField(max_length=60,blank=True)
+    github = models.CharField(max_length=60,blank=True)
+    twitter = models.CharField(max_length=60,blank=True)
+    bio = models.TextField(max_length=2000,blank=True)
+    profile_pic = models.ImageField(upload_to=imagepath,blank=True,default='profile_pic/default-user.jpg')
+>>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
     First_name = models.CharField(max_length=20)
     # middlename = models.CharField(max_length=20,null=True,blank=True)
     Last_name = models.CharField(max_length=20)
@@ -33,6 +48,7 @@ class SiteUser(models.Model):
     def get_full_name(self):
         return self.First_name+self.Last_name
 
+<<<<<<< HEAD
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
@@ -41,3 +57,14 @@ class SiteUser(models.Model):
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.profile_pic.path)
+=======
+    def save(self,*args,**kwargs):
+        super().save(*args,**kwargs)
+
+        img = Image.open(self.profile_pic.path)
+        if img.height > 300 or img.width > 300:
+            output_size = (300,300)
+            img.thumbnail(output_size)
+            img.save(self.profile_pic.path)
+            
+>>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36

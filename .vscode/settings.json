@@ -1,7 +1,11 @@
 {
+<<<<<<< HEAD
     "python.pythonPath": "/usr/bin/python3",
     "git.ignoreLimitWarning": true,
     "files.associations": {
         "iostream": "cpp"
     }
+=======
+    "python.pythonPath": "/usr/bin/python3"
+>>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
 }

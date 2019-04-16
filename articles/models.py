@@ -17,7 +17,11 @@ def imagepath(request, filename):
 
 
 class Post(models.Model):
+<<<<<<< HEAD
     title = models.CharField(max_length=100)
+=======
+    title = models.CharField(max_length=40)
+>>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
     content = models.TextField()
     draft = models.BooleanField(default=False)
     slug = models.SlugField(unique=True)
@@ -42,6 +46,7 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
+<<<<<<< HEAD
         img = Image.open(self.image.path)
         if img.height > 400 or img.width > 400:
             output_size = (400, 400)
@@ -51,6 +56,8 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
+=======
+>>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
         if self.image:
             img = Image.open(self.image.path)
             if img.height > 400 or img.width > 400:
@@ -59,6 +66,7 @@ class Post(models.Model):
                 img.save(self.image.path)
 
 
+<<<<<<< HEAD
 class Vote(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
@@ -67,6 +75,8 @@ class Vote(models.Model):
         return self.user.username+" "+self.post.slug
 
 
+=======
+>>>>>>> ed51eae750468f8c89cfa2bdc67f79c95e6d5d36
 def get_slug(instance, new_slug=None):
     slug = slugify(instance)
     if new_slug is not None:
