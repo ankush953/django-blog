@@ -42,8 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'articles.apps.ArticlesConfig',
     'users.apps.UsersConfig',
-    'taggit',
+
+    'taggit',    
     'pagedown',
+    'markdown_deux',
 ]
 
 

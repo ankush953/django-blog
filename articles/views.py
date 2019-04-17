@@ -16,9 +16,21 @@ from django.contrib import messages
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+# Importing Q to make queries
+from django.db.models import Q
+
 
 def homepage(request):
-    posts = Post.objects.filter(draft=False).order_by('-updated_at')
+    query = request.GET.get('q')
+    if query:
+        posts = Post.objects.filter(
+            Q(title__icontains=query) |
+            Q(user__username__startswith=query) |
+            Q(content__icontains=query) |
+            Q(tags__name__in=[query])
+        ).distinct().order_by('-updated_at')
+    else:
+        posts = Post.objects.filter(draft=False).order_by('-updated_at')
     paginator = Paginator(posts, 10)
 
     page = request.GET.get('page')
