@@ -3,13 +3,18 @@ import urllib.parse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.views.generic import TemplateView
+
 from .models import Post, Vote  # , Upvote, Downvote
+from comments.models import Comment
+
 from django.contrib.auth.decorators import login_required
+from django.contrib.contenttypes.models import ContentType
 
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from articles import forms
 from django.forms import modelformset_factory
+
 
 from django.contrib.auth import login, logout
 from django.contrib import messages
@@ -90,10 +95,17 @@ def create(request, obj=None):
 def readmore(request, slug):
     post = Post.objects.filter(slug=slug, draft=False).first()
     share_quote = urllib.parse.quote_plus(post.content)
+
+    content_type = ContentType.objects.get_for_model(Post)
+    object_id = post.id
+    # print(object_id)
+    comments = Comment.objects.filter(content_type=content_type,object_id=object_id)
+    # print(comments)
     content = {
         'post': post,
         'post_tags': list(post.tags.names()),
         'share_string': share_quote,
+        'comments':comments,
     }
     return render(request, 'full_blog.html', content)
 
