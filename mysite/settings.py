@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'articles.apps.ArticlesConfig',
     'users.apps.UsersConfig',
+    'comments',
 
     'taggit',    
     'pagedown',
