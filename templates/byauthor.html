@@ -54,8 +54,8 @@
         <a class="mr-2" href="{% url 'users:searchbyauthor' post.user %}">{{ post.user|capfirst }}</a>
         <small class="text-muted">{{ post.updated_at }}</small>
       </div>
-      <h2><a class="article-title" href="{% url 'articles:readmore' post.slug%}">{{ post.title }}</a></h2>
-      <p class="article-content">{{ post.content|safe }}</p>
+      <h2><a class="article-title" href="{% url 'articles:readmore' post.slug %}">{{ post.title }}</a></h2>
+      <p class="content-markdown">{{ post.content }}</p>
     </div>
   </article>
   {% endfor %}
