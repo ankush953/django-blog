@@ -15,11 +15,18 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from articles import forms
 from django.forms import modelformset_factory
 
-
 from django.contrib.auth import login, logout
 from django.contrib import messages
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+from django.db.models.signals import post_save
+from notifications.signals import notify
+from articles.models import Post
+
+import re
+
+from django.contrib.auth.models import User
 
 # Importing Q to make queries
 from django.db.models import Q
@@ -54,8 +61,38 @@ def homepage(request):
     return render(request, 'show_menu.html', context=context)
 
 
-def notifyusers(text):
-    pass
+def find(text,curr):
+    user_name = ''
+    while curr < len(text) and text[curr] != ' ' and text[curr]!='?' and text[curr]!='-':
+        user_name += text[curr]
+        curr += 1
+    user = User.objects.filter(username=user_name).first()
+    return user
+
+
+# ------------------------------------------------
+# django-notifications-hq
+
+def my_handler(sender, instance, created, **kwargs):
+    post = Post.objects.filter(slug=instance.slug).first()
+    mentioned_users = []
+    string = post.content
+    for i in range(len(string)):
+        if string[i]=='@':
+            user = find(string,i+1)
+            if user:
+                mentioned_users.append(user)
+    # print(mentioned_users)
+    # print(post.content.split('@'))
+    # print(mentioned_users.group(1))
+    # qs = User.objects.filter(username='ankush')
+    string = '<a href=\'{% url \'articles:readmore\' post.slug %}\'>' + instance.title + '</a>'
+    # print(string)
+    notify.send(sender=instance.user, recipient=mentioned_users, verb=" mentioned you in {}".format(instance.title))
+
+
+post_save.connect(my_handler, sender=Post)
+# --------------------------------------------------
 
 
 @login_required(login_url='users:login')
@@ -74,9 +111,9 @@ def create(request, obj=None):
 
                 post_form.save_m2m()
                 messages.success(request, 'Your Post is saved')
-                notifyusers(instance.content)
+                # notifyusers(instance.content)
                 return redirect('articles:readmore', slug=instance.slug)
-                notifyusers(instance.content)
+                # notifyusers(instance.content)
                 return redirect('articles:readmore', slug=instance.slug)
             else:
                 messages.error(request, 'Error Occured during saving post')
@@ -99,13 +136,14 @@ def readmore(request, slug):
     content_type = ContentType.objects.get_for_model(Post)
     object_id = post.id
     # print(object_id)
-    comments = Comment.objects.filter(content_type=content_type,object_id=object_id)
+    comments = Comment.objects.filter(
+        content_type=content_type, object_id=object_id)
     # print(comments)
     content = {
         'post': post,
         'post_tags': list(post.tags.names()),
         'share_string': share_quote,
-        'comments':comments,
+        'comments': comments,
     }
     return render(request, 'full_blog.html', content)
 
