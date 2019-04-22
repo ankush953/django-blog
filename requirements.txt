@@ -7,9 +7,12 @@ django-crispy-forms==1.7.2
 django-heroku==0.3.1
 django-markdown-deux==1.0.5
 django-messages==0.5.3
+django-model-utils==3.1.2
+django-notifications-hq==1.5.0
 django-pagedown==1.0.6
 django-taggit==1.1.0
 gunicorn==19.9.0
+jsonfield==2.0.2
 markdown2==2.3.7
 Pillow==5.4.1
 psycopg2==2.8.1
