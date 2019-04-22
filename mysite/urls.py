@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from users.views import about
+import notifications.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,6 +37,10 @@ urlpatterns = [
 
     path('password-reset/complete', auth_views.PasswordResetCompleteView.as_view(
         template_name='password_reset_complete.html'), name='password_reset_complete'),
+
+    path('inbox/notifications/',
+        include(notifications.urls, namespace='notifications')),
+
 ]
 
 if settings.DEBUG:
