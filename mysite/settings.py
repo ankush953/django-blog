@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'taggit',    
     'pagedown',
     'markdown_deux',
+    'notifications',
 ]
 
 
