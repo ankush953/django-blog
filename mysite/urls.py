@@ -20,7 +20,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from users.views import about
+from articles.views import homepage
 import notifications.urls
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -40,6 +42,8 @@ urlpatterns = [
 
     path('inbox/notifications/',
         include(notifications.urls, namespace='notifications')),
+    
+    
 
 ]
 
