@@ -1,0 +1,38 @@
+<div class="alert alert-block alert-{{ notice.level }}">
+  <a style="font-size:20px;" class="close pull-right btn-sm btn-danger"
+    href='{% url 'notifications:delete' notice.slug %}'>Delete</a>
+  {% if notice.unread %}
+  <a style="font-size:20px;" class="close pull-right btn-sm btn-info"
+    href="{% url 'notifications:mark_as_read' notice.slug %}">
+    Mark as read
+  </a>
+  {% else %}
+  <a style="font-size:20px;" class="close pull-right btn-sm btn-info"
+    href="{% url 'notifications:mark_as_unread' notice.slug %}">Mark
+    as unread
+  </a>
+  {% endif %}
+
+
+
+  <h6>
+    {% if notice.unread %}
+    <i class="fa fa-envelope">
+    </i>
+    {% else %}
+    <i class="fa fa-envelope-open-o"></i>
+
+    {% endif %}
+    <a href="{% url 'users:searchbyauthor' notice.actor %}">{{ notice.actor }} </a>
+    {{ notice.verb }}
+
+  </h6>
+
+  <p>{{ notice.timesince }} ago</p>
+
+  <div class="notice-actions">
+    {% for action in notice.data.actions %}
+    <a class="btn" href="{{ action.href }}">{{ action.title }}</a>
+    {% endfor %}
+  </div>
+</div>

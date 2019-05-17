@@ -10,14 +10,14 @@ from articles.models import Post
 class Comment(models.Model):
     content = models.TextField()
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    # post = models.ForeignKey(Post,on_delete=models.CASCADE)
+    post = models.ForeignKey(Post,on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
     # tag = models.SlugField()
 
-
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, null=True)
-    object_id = models.PositiveIntegerField(null=True)
-    content_object = GenericForeignKey('content_type', 'object_id')
+    # # Essential code you have to write to use generic keys
+    # content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, null=True)
+    # object_id = models.PositiveIntegerField(null=True)
+    # content_object = GenericForeignKey('content_type', 'object_id')
 
     def __str__(self):
         return self.user.username

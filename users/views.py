@@ -80,6 +80,11 @@ def signup_view(request, instance=None):
             user.save()
             profile.user = user
 
+            # if 'profile_pic' in request.FILES:
+            #     profile.profile_pic = request.FILES['profile_pic']
+            # else:
+            #     profile.profile_pic = 'profile_pic/default-user.jpg'
+
             if 'profile_pic' in request.FILES:
                 profile.profile_pic = request.FILES['profile_pic']
             else:

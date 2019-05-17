@@ -1,0 +1,10 @@
+{% notifications_unread as unread_count %}
+{% if unread_count %}
+You have <strong>{{ unread_count }}</strong> unread notifications.
+{% endif %}
+
+{% live_notify_badge %}
+{% live_notify_list %}
+
+{% live_notify_badge badge_class="badge" %}
+{% live_notify_list list_class="dropdown-menu" %}

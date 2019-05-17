@@ -15,7 +15,7 @@
             <small class="text-muted">{{ post.updated_at }}</small>
         </div>
         <h2><a class="article-title" href="{% url 'articles:readmore' post.slug%}">{{ post.title }}</a></h2>
-        <p class="article-content">{{ post.content }}</p>
+        <p class="article-content content-markdown">{{ post.content }}</p>
     </div>
 </article>
 {% endfor %}

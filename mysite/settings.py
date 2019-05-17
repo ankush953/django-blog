@@ -176,4 +176,7 @@ EMAIL_HOST_USER= os.environ.get('email')
 EMAIL_HOST_PASSWORD= os.environ.get('DJANGO_PASSWORD')
 DEFAULT_FROM_EMAIL= EMAIL_HOST_USER
 
-DEFAULT_FROM_EMAIL= EMAIL_HOST_USER
+# DEFAULT_FROM_EMAIL= EMAIL_HOST_USER
+
+# To redirect all the 404 pages
+handler404 = 'app.views.404_view'

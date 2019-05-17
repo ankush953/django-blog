@@ -4,7 +4,13 @@
 
 <div class="content-section">
   <div class="media">
-    <img class="rounded-circle account-img" src="{{ author.siteuser.profile_pic.url }}">
+    
+    <!-- {% if author.siteuser.profile_pic %} -->
+    <img class="rounded-circle account-img" src="{{ author.siteuser.profile_pic.url }}" alt="{{ author.siteuser.First_name }}">
+    
+    <!-- {% endif %} -->
+
+
     <div class="media-body">
       <h2 class="account-heading">{{ author.get_full_name|capfirst }}</h2>
       <p class="text-secondary"><b>username:</b> {{ author.username }}</p>

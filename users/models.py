@@ -16,8 +16,11 @@ class SiteUser(models.Model):
     linkedin = models.CharField(max_length=60, blank=True)
     github = models.CharField(max_length=60, blank=True)
     twitter = models.CharField(max_length=60, blank=True)
-    bio = models.TextField(max_length=200, blank=True)
+    bio = models.TextField(max_length=400, blank=True)
 
+    # profile_pic = models.EmailField(
+    #      blank=True, default='http://chittagongit.com/images/default-user-icon/default-user-icon-8.jpg')
+    
     profile_pic = models.ImageField(
         upload_to=imagepath, blank=True, default='profile_pic/default-user.jpg')
     First_name = models.CharField(max_length=20)

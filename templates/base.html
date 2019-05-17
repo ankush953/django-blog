@@ -20,6 +20,10 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
 
+    {% notifications_unread as unread_count %}
+
+
+
     {% block head_extra %} {% endblock head_extra %}
 
     {% if title %}
@@ -59,10 +63,13 @@
                         <a class="nav-item nav-link" href="{% url 'users:signup' %}">Register</a>
                         {% else %}
                         <a class="nav-item nav-link" href="{% url 'notifications:unread' %}"><i
-                                class='fa fa-bell'></i></a>
+                                class='fa fa-bell'>{% if unread_count %} <sup>
+                                    <span class="badge badge-light">{{ unread_count }}</span> </sup>
+                                {% endif %} </i></a>
                         <a class="nav-item nav-link" href="{% url 'users:searchbyauthor' user.username %}">
                             <div class="media">
-                                <img src="{{ user.siteuser.profile_pic.url }}" style="width:25px;" alt="{{ user.username }}">
+                                <img src="{{ user.siteuser.profile_pic.url }}" style="width:25px;"
+                                    alt="Me">
 
                             </div>
                         </a>
@@ -89,7 +96,7 @@
                 {% block content %}{% endblock %}
             </div>
             <div class="col-md-4">
-                <div class="content-section">
+                <!-- <div class="content-section">
                     <h3>Our Sidebar</h3>
                     <p class='text-muted'>You can put any information here you'd like.
                         <ul class="list-group">
@@ -99,7 +106,7 @@
                             <li class="list-group-item list-group-item-light">etc</li>
                         </ul>
                     </p>
-                </div>
+                </div> -->
             </div>
         </div>
     </main>
