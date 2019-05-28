@@ -4,6 +4,8 @@
 
 
 {% if post %}
+
+{{ post.id }}
 <div class="parent">
     {% if message %}
     <div class='alert alert-primary'>
@@ -68,30 +70,34 @@
 
             </div>
 
-            
-
-            {% if comments %}
-            <div>
-               
-                {% for comment in comments %}
-                
-                {{ comment.user }} | {{ comment.timestamp|timesince }} ago <br>
-                {{ comment.content }} 
-                <hr>
-                {% endfor %}
-            </div>
-            {% endif %}
-
-            {{ post.comment_set.all }}
-
-
-
-
 
         </div>
+        {% if comments %}
+        <div>
+            <p class="lead">Comments:</p>
+            {% for comment in comments %}
+
+            {{ comment.user }} | {{ comment.timestamp|timesince }} ago <br>
+            {{ comment.content }}
+            <hr>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- <div>
+                <p class="lead">Comments:</p>
+                {% for comment in comments %}
+                {{ comment.content }}
+                {% endfor %}
+            </div> -->
+
+
+
 
 
     </div>
+
+
 </div>
 {% endif %}
 

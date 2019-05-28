@@ -142,17 +142,17 @@ def readmore(request, slug):
     post = Post.objects.filter(slug=slug, draft=False).first()
     share_quote = urllib.parse.quote_plus(post.content)
 
-    # content_type = ContentType.objects.get_for_model(Post)
-    # object_id = post.id
+    content_type = ContentType.objects.get_for_model(Post)
+    object_id = post.id
     # # print(object_id)
-    # # comments = Comment.objects.filter(
-    # #     content_type=content_type, object_id=object_id)
+    comments = Comment.objects.filter(
+        content_type=content_type, object_id=object_id)
     # # print(comments)
     content = {
         'post': post,
         'post_tags': list(post.tags.names()),
         'share_string': share_quote,
-        # 'comments': comments,
+        'comments': comments,
     }
     return render(request, 'full_blog.html', content)
 

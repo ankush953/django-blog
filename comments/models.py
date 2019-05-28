@@ -19,7 +19,6 @@ class Comment(models.Model):
     object_id = models.PositiveIntegerField(null=True)
     content_object = GenericForeignKey('content_type', 'object_id')
 
-
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
